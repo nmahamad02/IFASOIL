@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <br>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <mat-card style="height: 200px;">
+                <mat-card-header>
+                    <mat-card-title><h2>DASHBOARD</h2></mat-card-title>
+                    <span class="example-spacer"></span>
+                    <button class="btn btn-secondary" style="float: right;">
+                        <i class="material-icons">print</i>&nbsp;&nbsp;
+                    </button>
+                </mat-card-header>
+                <hr>
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-6">
+                            Data as of: {{ runtimeData[0].CHECKTIME }}, {{ runtimeData[0].CHECKDATE }}
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr [style.color]="checkTemp ? 'green' : 'red' ">
+                                        <th>Temperature</th>
+                                        <td>{{ runtimeData[0].OUTSIDETEMPERATURE }}</td>
+                                    </tr>
+                                    <tr [style.color]="checkHumd ? 'green' : 'red' ">
+                                        <th>Humidity</th>
+                                        <td>{{ runtimeData[0].HUMIDITY }}</td>
+                                    </tr>
+                                </tbody>            
+                            </table>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <br>    <br>    <br>    <br>   <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br> 
+</div>
