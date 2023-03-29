@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
+import { NgChartsModule } from 'ng2-charts';
 import { MatCardModule } from '@angular/material/card';
 
 export const homeRoutes = [
@@ -18,6 +19,7 @@ export const homeRoutes = [
   imports: [
     CommonModule,
     MatCardModule,
+    NgChartsModule,
     RouterModule.forChild(homeRoutes)
   ]
 })

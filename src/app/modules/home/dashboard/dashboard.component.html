@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-1"></div>
         <div class="col-10">
-            <mat-card style="height: 200px;">
+            <mat-card>
                 <mat-card-header>
                     <mat-card-title><h2>DASHBOARD</h2></mat-card-title>
                     <span class="example-spacer"></span>
@@ -28,6 +28,13 @@
                                     </tr>
                                 </tbody>            
                             </table>
+                        </div>
+                        <div class="col-6">
+                            <h3><u>Soil Temperature & Humidity</u></h3>
+                            <canvas baseChart #chart1 width="1000" height="500" 
+                            [type]="'line'" [data]="chart1Data" [options]="lineChartOptions" 
+                            [legend]="lineChartLegend"></canvas>
+                            <hr>
                         </div>
                     </div>
                 </mat-card-content>

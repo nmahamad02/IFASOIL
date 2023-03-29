@@ -13,10 +13,14 @@ export class LookupService {
     return this.http.get(this.url + 'data')
   }
 
-  getBatchData(){
-    return this.http.get(this.url + 'batch/data')
-  }
-
+  getBatchData(month: string){
+    return this.http.get(this.url + 'batch/data/' + month)
+  }  
+  
+  getChartData(){
+    return this.http.get(this.url + 'chart/data')
+  }  
+  
   getParameterData(){
     return this.http.get(this.url + 'parameter/data')
 
