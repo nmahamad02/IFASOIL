@@ -1,5 +1,7 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
+import * as moment from 'moment';
 import { BaseChartDirective } from 'ng2-charts';
 import { LookupService } from 'src/app/services/lookup/lookup.service';
 
@@ -25,6 +27,7 @@ export class DashboardComponent implements OnInit {
 
   utc = new Date();
   mCurMonth = this.formatMonth(this.utc);
+  mCurYear = this.formatYear(this.utc);
 
   constructor(private lookupDataService: LookupService) { }
 
@@ -51,22 +54,25 @@ export class DashboardComponent implements OnInit {
       }
     })
 
-    this.lookupDataService.getChartData().subscribe((res: any) => {
-      this.chartData = res.recordset;
-      console.log(this.chartData);
-
-      for (let i = 0; i < this.chartData.length; i++) {
-        const dateTime = `${this.chartData[i].CHECKTIME}, ${this.chartData[i].CHECKDATE}`
-        this.labelData.push(dateTime)
-        this.tempData.push(Number(this.chartData[i].OUTSIDETEMPERATURE))
-        this.humdData.push(Number(this.chartData[i].HUMIDITY))
-      }
-
-      this.charts.forEach((child) => {
-        console.log(this.charts)
-        child.chart!.update()
-      });
-    })
+    for (let j = Number(this.mCurMonth.substring(1,2)); j !=0; j--) {
+      this.lookupDataService.getChartData(`${j}-${this.mCurYear}`).subscribe((res: any) => {
+        this.chartData = res.recordset;
+        console.log(this.chartData);
+  
+        for (let i = 0; i < this.chartData.length; i++) {
+          const dateTime = `${this.chartData[i].CHECKTIME}, ${this.chartData[i].CHECKDATE}`
+          this.labelData.push(dateTime)
+          this.tempData.push(Number(this.chartData[i].OUTSIDETEMPERATURE))
+          this.humdData.push(Number(this.chartData[i].HUMIDITY))
+        }
+  
+        this.charts.forEach((child) => {
+          console.log(this.charts)
+          child.chart!.update()
+        });
+      })
+    }
+    
   }
 
   public chart1Data: ChartConfiguration<'line'>['data'] = {
@@ -116,6 +122,18 @@ export class DashboardComponent implements OnInit {
       month = '0' + month;
     }
     return [month, year].join('-');
+  }
+
+  formatYear(date: any) {
+    var d = new Date(date), day = '' + d.getDate(), month = '' + (d.getMonth() + 1), year = d.getFullYear();
+
+    if (day.length < 2) {
+      day = '0' + day;
+    } 
+    if (month.length < 2) {
+      month = '0' + month;
+    }
+    return [year].join('-');
   }
 
 }

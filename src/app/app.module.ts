@@ -14,7 +14,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,6 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -31,8 +30,12 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     MatSidenavModule,
     //MatSnackBar, MatSnackBarModule,
     HttpClientModule,
-    MatFormFieldModule,
     MatListModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatExpansionModule,
     MatCardModule,
     MatMenuModule,

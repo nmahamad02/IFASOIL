@@ -17,8 +17,8 @@ export class LookupService {
     return this.http.get(this.url + 'batch/data/' + month)
   }  
   
-  getChartData(){
-    return this.http.get(this.url + 'chart/data')
+  getChartData(month: string){
+    return this.http.get(this.url + 'chart/data/' + month)
   }  
   
   getParameterData(){
