@@ -29,11 +29,17 @@
                                     </tr>
                                 </tbody>            
                             </table>
-                        </div>
-                        <div class="col-6">
+                            <hr>
                             <h3><u>Soil Temperature & Humidity</u></h3>
                             <canvas baseChart #chart1 width="1000" height="500" 
                             [type]="'line'" [data]="chart1Data" [options]="lineChartOptions" 
+                            [legend]="lineChartLegend"></canvas>
+                            <hr>
+                        </div>
+                        <div class="col-6">
+                            <h3><u>Evapotranpiration</u></h3>
+                            <canvas baseChart #chart2 width="1000" height="500" 
+                            [type]="'line'" [data]="chart2Data" [options]="lineChartOptions" 
                             [legend]="lineChartLegend"></canvas>
                             <hr>
                         </div>

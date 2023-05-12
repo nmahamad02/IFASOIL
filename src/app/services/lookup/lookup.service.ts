@@ -13,6 +13,14 @@ export class LookupService {
     return this.http.get(this.url + 'data')
   }
 
+  getDayData(){
+    return this.http.get(this.url + 'day')
+  }  
+  
+  getDaywiseData(date: string){
+    return this.http.get(this.url + 'day/data/' + date)
+  }  
+
   getBatchData(month: string){
     return this.http.get(this.url + 'batch/data/' + month)
   }  
